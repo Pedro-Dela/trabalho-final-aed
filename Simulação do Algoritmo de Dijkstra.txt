@@ -1,0 +1,88 @@
+CÓDIGO:
+
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <climits>
+
+using namespace std;
+
+#define INF INT_MAX // Valor infinito para distâncias
+
+typedef pair<int, int> pii; // Pair para armazenar distância e nó
+
+// Função para calcular caminho mais curto usando Dijkstra
+void dijkstra(vector<vector<pii>>& graph, int start, vector<int>& dist, vector<int>& parent) {
+    int n = graph.size();
+    dist.assign(n, INF);
+    parent.assign(n, -1);
+    dist[start] = 0;
+    priority_queue<pii, vector<pii>, greater<pii>> pq;
+    pq.push({0, start});
+
+    while (!pq.empty()) {
+        int u = pq.top().second;
+        int d = pq.top().first;
+        pq.pop();
+
+        if (d > dist[u])
+            continue;
+
+        for (auto& edge : graph[u]) {
+            int v = edge.first;
+            int weight = edge.second;
+            if (dist[u] + weight < dist[v]) {
+                dist[v] = dist[u] + weight;
+                parent[v] = u;
+                pq.push({dist[v], v});
+            }
+        }
+    }
+}
+
+// Exemplo de uso do algoritmo de Dijkstra
+int main() {
+    int n = 5; // Número de nós na rede
+    vector<vector<pii>> graph(n);
+    
+    // Exemplo de grafo (conexões e pesos)
+    graph[0].push_back({1, 4});
+    graph[0].push_back({2, 1});
+    graph[1].push_back({2, 2});
+    graph[1].push_back({3, 5});
+    graph[2].push_back({3, 2});
+    graph[2].push_back({4, 1});
+    graph[3].push_back({4, 3});
+
+    vector<int> dist, parent;
+    int start_node = 0; // Nó de origem para calcular caminhos
+    dijkstra(graph, start_node, dist, parent);
+
+    // Exibindo os caminhos mais curtos a partir do nó de origem
+    cout << "Caminhos mais curtos a partir do nó " << start_node << ":\n";
+    for (int i = 0; i < n; ++i) {
+        cout << "Para o nó " << i << ": Distância = " << dist[i] << ", Caminho = ";
+        int p = i;
+        while (p != -1) {
+            cout << p << " ";
+            p = parent[p];
+        }
+        cout << "\n";
+    }
+
+    return 0;
+}
+
+
+
+Resultados:
+Com o grafo configurado, os resultados esperados são as distâncias e caminhos mais curtos do nó 0 para todos os outros nós na rede. O programa exibe algo assim:
+
+Caminhos mais curtos a partir do nó 0:
+Para o nó 0: Distância = 0, Caminho = 0 
+Para o nó 1: Distância = 4, Caminho = 1 0 
+Para o nó 2: Distância = 1, Caminho = 2 0 
+Para o nó 3: Distância = 3, Caminho = 3 2 0 
+Para o nó 4: Distância = 2, Caminho = 4 2 0 
+
+
