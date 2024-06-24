@@ -1,0 +1,27 @@
+Resultados Esperados:
+O programa deve imprimir a representação do grafo, mostrando os nós conectados e os pesos das arestas, como no caso:
+
+Representação do Grafo:
+Nó 0 conectado a:
+  Nó 1 com peso 4
+  Nó 2 com peso 1
+
+Nó 1 conectado a:
+  Nó 0 com peso 4
+  Nó 2 com peso 2
+  Nó 3 com peso 5
+
+Nó 2 conectado a:
+  Nó 0 com peso 1
+  Nó 1 com peso 2
+  Nó 3 com peso 2
+  Nó 4 com peso 1
+
+Nó 3 conectado a:
+  Nó 1 com peso 5
+  Nó 2 com peso 2
+  Nó 4 com peso 3
+
+Nó 4 conectado a:
+  Nó 2 com peso 1
+  Nó 3 com peso 3
