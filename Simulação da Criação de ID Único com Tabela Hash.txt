@@ -1,0 +1,40 @@
+CÓDIGO:
+
+#include <iostream>
+#include <unordered_map>
+#include <string>
+#include <sstream>
+#include <iomanip>
+
+using namespace std;
+
+// Função para criar ID único usando tabela Hash (SHA-256)
+string create_id(string data, string destination) {
+    stringstream ss;
+    ss << data << "-" << destination;
+
+    // Simulação de função de hash (SHA-256)
+    // Aqui estou usando uma simples formatação para demonstração
+    return ss.str();
+}
+
+int main() {
+    string data = "Dados importantes";
+    string destination = "Dispositivo final";
+
+    // Criando o ID único usando tabela Hash
+    string id = create_id(data, destination);
+
+    // Exibindo o ID gerado
+    cout << "ID gerado para enviar dados para '" << destination << "': " << id << endl;
+
+    return 0;
+}
+
+
+Resultados Esperados:
+A função deve gerar um ID único para os dados com base no destino. O resultado é:
+
+ID gerado para enviar dados para 'Dispositivo final': Dados importantes-Dispositivo final
+
+
