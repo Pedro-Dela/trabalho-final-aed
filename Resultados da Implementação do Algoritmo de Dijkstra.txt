@@ -1,0 +1,9 @@
+Resultados Esperados:
+O programa deve calcular e imprimir os caminhos mais curtos a partir do nó de origem (neste caso, nó 0), como no caso:
+
+Caminhos mais curtos a partir do nó 0:
+Para o nó 0: Distância = 0, Caminho = 0 
+Para o nó 1: Distância = 4, Caminho = 1 0 
+Para o nó 2: Distância = 1, Caminho = 2 0 
+Para o nó 3: Distância = 3, Caminho = 3 2 0 
+Para o nó 4: Distância = 2, Caminho = 4 2 0 
