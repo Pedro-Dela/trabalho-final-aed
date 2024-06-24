@@ -1,0 +1,104 @@
+CÓDIGO:
+
+#include <iostream>
+#include <unordered_map>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+// Simulação de um dispositivo que recebe dados
+struct Device {
+    string name;
+    vector<string> received_data;
+
+    void receive_data(string data) {
+        received_data.push_back(data);
+    }
+
+    void print_received_data() {
+        cout << "Dados recebidos por '" << name << "':\n";
+        for (const auto& data : received_data) {
+            cout << "- " << data << "\n";
+        }
+    }
+};
+
+int main() {
+    unordered_map<string, Device> network;
+
+    // Simulação de dispositivos na rede
+    Device router{"Router"};
+    Device device1{"Dispositivo1"};
+    Device device2{"Dispositivo2"};
+
+    network["Router"] = router;
+    network["Dispositivo1"] = device1;
+    network["Dispositivo2"] = device2;
+
+    int choice;
+    string data;
+    string destination;
+
+    do {
+        cout << "Menu:\n";
+        cout << "1. Enviar dado\n";
+        cout << "2. Consultar dados recebidos\n";
+        cout << "3. Sair\n";
+        cout << "Escolha uma opção: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                cout << "Digite o dado a ser enviado: ";
+                cin.ignore();
+                getline(cin, data);
+                cout << "Digite o destino: ";
+                getline(cin, destination);
+
+                // Simulação de envio de dados pelo roteador
+                router.receive_data(data);
+
+                cout << "Dado enviado com sucesso para '" << destination << "'.\n";
+                break;
+            case 2:
+                cout << "Dados recebidos pelo Router:\n";
+                router.print_received_data();
+                break;
+            case 3:
+                cout << "Saindo do programa.\n";
+                break;
+            default:
+                cout << "Opção inválida. Tente novamente.\n";
+        }
+
+    } while (choice != 3);
+
+    return 0;
+}
+
+
+Resultados Esperados:
+O menu deve permitir enviar dados e consultar os dados recebidos pelo roteador. Um exemplo de interação é:
+
+Menu:
+1. Enviar dado
+2. Consultar dados recebidos
+3. Sair
+Escolha uma opção: 1
+Digite o dado a ser enviado: Mensagem de teste
+Digite o destino: Dispositivo1
+Dado enviado com sucesso para 'Dispositivo1'.
+Menu:
+1. Enviar dado
+2. Consultar dados recebidos
+3. Sair
+Escolha uma opção: 2
+Dados recebidos pelo Router:
+- Mensagem de teste
+Menu:
+1. Enviar dado
+2. Consultar dados recebidos
+3. Sair
+Escolha uma opção: 3
+Saindo do programa.
