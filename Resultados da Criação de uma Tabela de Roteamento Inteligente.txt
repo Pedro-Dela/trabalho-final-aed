@@ -1,0 +1,16 @@
+Resultados Esperados:
+O programa deve calcular e imprimir a tabela de roteamento atualizada com base nos resultados do algoritmo de Dijkstra a partir do nó de origem (neste caso, nó 0). Os resultados são:
+
+Tabela de Roteamento:
+Destino  |   Próximo Salto   |   Distância
+0        |   Não alcançável   |   0
+1        |   0                |   4
+2        |   0                |   1
+3        |   2                |   3
+4        |   2                |   2
+
+
+Nesta tabela:
+
+Para o nó 0, o próximo salto é "Não alcançável" porque é o próprio nó.
+Para os outros nós, indica o próximo nó a ser alcançado para chegar ao destino mais rapidamente e a distância até esse destino.
